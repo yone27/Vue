@@ -1,0 +1,35 @@
+//+------------------------------------------------------------------+
+//| Texts
+//+------------------------------------------------------------------+
+
+body {
+	text-align : center;
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* < col-md | Medium and down */
+@media(max-width : 991px) {
+	body {
+		text-align : center;
+	}
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+}

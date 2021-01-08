@@ -1,0 +1,91 @@
+//+------------------------------------------------------------------+
+//| Tabs
+//+------------------------------------------------------------------+
+.tabs {
+	background-color : $color3;
+	margin-bottom    : 0;
+	margin-left      : 0;
+	text-align       : center;
+	
+	li {
+		position   : relative;
+		transition : all .3s ease-in-out;
+		padding    : 0;
+		
+		a {
+			border           : none;
+			padding          : 18px 25px;
+			color            : white;
+			background-color : $color3;
+			border-radius    : 0;
+			display          : block;
+			transition       : all .3s ease-in-out;
+			font-weight      : 700;
+			
+			&:hover, &:focus {
+				background-color : $color1;
+			}
+		}
+		
+		&.active {
+			transition : all .3s ease-in-out;
+			
+			a {
+				background-color : $color1;
+			}
+			
+			&:after {
+				content          : '';
+				position         : absolute;
+				border           : 15px solid transparent;
+				border-top-color : $color1;
+				left             : 50%;
+				transform        : translateX(-50%);
+			}
+		}
+	}
+	
+	+ .tab-content {
+		overflow      : hidden;
+		border        : 1px solid $gray-lighter;
+		background    : #fdfdfd;
+		line-height   : 25px;
+		padding       : 30px 25px;
+		border-top    : 5px solid $color1;
+		border-bottom : 5px solid $color1;
+		text-align    : center;
+	}
+	
+	&.transparent {
+		background-color : transparent;
+		
+	}
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* < col-md | Medium and down */
+@media(max-width : 991px) {
+	.tabs {
+		li {
+			display : block;
+		}
+	}
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+}

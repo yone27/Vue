@@ -1,0 +1,129 @@
+//+------------------------------------------------------------------+
+//| Sidebar menus
+//+------------------------------------------------------------------+
+.sidebar-menu {
+	&.sidebar-nav {
+		&.sidebar-nav-a {
+			text-align : left;
+			
+			.side {
+				margin-bottom : 30px;
+				
+				> .navbar {
+					margin : 0;
+				}
+				
+				> .title {
+					background-color : $color1;
+					color            : $color4;
+					padding          : 10px;
+					display          : block;
+					margin-bottom    : 30px;
+				}
+			}
+			
+			> .collapse-sidebar {
+				margin-top : 0 !important;
+				
+				:last-child {
+					margin-bottom : 0;
+				}
+			}
+			
+			> button {
+				&:hover, &:focus {
+					background-color : lighten($color1, 20%) !important;
+					color            : $color4;
+				}
+			}
+		}
+	}
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+	.sidebar-menu {
+		&.sidebar-nav {
+			&.sidebar-nav-a {
+				> .collapse-sidebar {
+					.side {
+						> .row {
+							> :last-child {
+								> * {
+									border-bottom : none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+	.sidebar-menu {
+		&.sidebar-nav {
+			&.sidebar-nav-a {
+				> .collapse-sidebar {
+					.side {
+						> .row {
+							> :last-child {
+								> * {
+									border-bottom : none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+	.sidebar-menu {
+		&.sidebar-nav {
+			&.sidebar-nav-a {
+				text-align    : center;
+				margin-bottom : 50px;
+				
+				> .collapse-sidebar {
+					padding-top : 30px;
+				}
+			}
+		}
+	}
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+	.sidebar-menu {
+		&.sidebar-nav {
+			&.sidebar-nav-a {
+				text-align    : center;
+				margin-bottom : 50px;
+				
+				> .collapse-sidebar {
+					padding-top : 30px;
+					
+					.side {
+						> .row {
+							> :last-child {
+								> * {
+									border-bottom : none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

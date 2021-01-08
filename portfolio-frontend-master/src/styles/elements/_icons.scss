@@ -1,0 +1,124 @@
+//+------------------------------------------------------------------+
+//| Icons
+//+------------------------------------------------------------------+
+.icon {
+	background-color : $color1;
+	color            : $color4;
+	
+	&.rounded {
+		-webkit-border-radius : 100%;
+		-moz-border-radius    : 100%;
+		border-radius         : 100%;
+	}
+	
+	&.semi-rounded {
+		-webkit-border-radius : 5px;
+		-moz-border-radius    : 5px;
+		border-radius         : 5px;
+	}
+	
+	&.md {
+		i {
+			font-size : 18px;
+		}
+		
+		width  : 60px;
+		height : 60px;
+	}
+	
+	&.lg {
+		i {
+			font-size : 24px;
+		}
+		
+		width  : 80px;
+		height : 80px;
+	}
+	
+	&.xl {
+		i {
+			font-size : 30px;
+		}
+		
+		width  : 100px;
+		height : 100px;
+	}
+}
+
+
+//+------------------------------------------------------------------+
+//| Social networks share
+//+------------------------------------------------------------------+
+ul {
+	&.social {
+		&.vertical {
+			display        : flex;
+			flex-direction : column;
+			
+			li {
+				a {
+					margin : 0;
+				}
+			}
+		}
+	}
+	
+	&.md {
+		li {
+			a {
+				i {
+					font-size   : 24px;
+					width       : 50px;
+					height      : 50px;
+					line-height : 50px;
+				}
+			}
+		}
+	}
+	
+	&.lg {
+		li {
+			a {
+				i {
+					font-size   : 24px;
+					width       : 60px;
+					height      : 60px;
+					line-height : 60px;
+				}
+			}
+		}
+	}
+	
+	&.xl {
+		li {
+			a {
+				i {
+					font-size   : 30px;
+					width       : 100px;
+					height      : 100px;
+					line-height : 100px;
+				}
+			}
+		}
+	}
+}
+
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+}

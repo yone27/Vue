@@ -1,0 +1,393 @@
+//###########################################################
+// Variables
+//###########################################################
+// Durations
+$fastDuration : .1s !default;
+$mediumDuration : .3s !default;
+$slowDuration : .5s !default;
+// Colors
+$shadowColor : rgba(0, 0, 0, .6) !default;
+//###########################################################
+// Hacks and mixins
+//###########################################################
+// Button variants
+@mixin button-variant($color, $background, $border) {
+	color            : $color;
+	background-color : $background;
+	border-color     : $border;
+	&:focus,
+	&.focus {
+		color            : $color;
+		background-color : darken($background, 10%);
+		border-color     : darken($border, 25%);
+	}
+	&:hover {
+		color            : $color;
+		background-color : darken($background, 10%);
+		border-color     : darken($border, 17%);
+	}
+	&:active,
+	&.active,
+	.open > &.dropdown-toggle {
+		color            : $color;
+		background-color : darken($background, 10%);
+		border-color     : darken($border, 17%);
+		
+		&:hover,
+		&:focus,
+		&.focus {
+			color            : $color;
+			background-color : darken($background, 17%);
+			border-color     : darken($border, 25%);
+		}
+	}
+	&:active,
+	&.active,
+	.open > &.dropdown-toggle {
+		background-image : none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&:hover,
+		&:focus,
+		&.focus {
+			background-color : $background;
+			border-color     : $border;
+		}
+	}
+	.badge {
+		color            : $background;
+		background-color : $color;
+	}
+}
+
+// prefix declarations
+@mixin prefixed($property, $value) {
+	-webkit-#{$property}: #{$value};
+	-moz-#{$property}   : #{$value};
+	-ms-#{$property}    : #{$value};
+	-o-#{$property}     : #{$value};
+	#{$property}        : #{$value};
+}
+
+// prefix keyframes
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// Improve performance on mobile/tablet devices, perspective reduces blurryness of text in Chrome
+@mixin hardwareAccel() {
+	@include prefixed(transform, perspective(1px) translateZ(0));
+}
+
+// Improve aliasing on mobile/tablet devices
+@mixin improveAntiAlias() {
+	box-shadow : 0 0 1px rgba(0, 0, 0, 0);
+}
+
+// Transforms need to be block-level to work
+@mixin forceBlockLevel() {
+	display        : inline-block;
+	vertical-align : middle;
+}
+
+// Improve performance all hacks
+@mixin hacks() {
+	@include forceBlockLevel();
+	@include hardwareAccel();
+	@include improveAntiAlias();
+}
+
+//###########################################################
+// Borders effects
+//###########################################################
+/* Ripple Out */
+@mixin ripple-out {
+	$borderWidth : 4px;
+	position : relative;
+	@include hacks();
+	@include keyframes(btn-ripple-out) {
+		100% {
+			top     : -(6px + 6px);
+			right   : -(6px + 6px);
+			bottom  : -(6px + 6px);
+			left    : -(6px + 6px);
+			opacity : 0;
+		}
+	}
+	&:before {
+		content      : '';
+		position     : absolute;
+		border-style : solid;
+		border-width : $borderWidth;
+		top          : 0;
+		right        : 0;
+		bottom       : 0;
+		left         : 0;
+		opacity      : 1;
+		@include prefixed(animation-duration, $slowDuration);
+	}
+	&.btn-default {
+		&:before {
+			border-color : $btn-default-bg;
+		}
+	}
+	&.btn-primary {
+		&:before {
+			border-color : $btn-primary-bg;
+		}
+	}
+	&.btn-success {
+		&:before {
+			border-color : $btn-success-bg;
+		}
+	}
+	&.btn-info {
+		&:before {
+			border-color : $btn-info-bg;
+		}
+	}
+	&.btn-warning {
+		&:before {
+			border-color : $btn-warning-bg;
+		}
+	}
+	&.btn-danger {
+		&:before {
+			border-color : $btn-danger-bg;
+		}
+	}
+	&.btn-white {
+		&:before {
+			border-color : white;
+		}
+	}
+	&.btn-lighten {
+		&:before {
+			border-color : $lighten;
+		}
+	}
+	&.btn-darken {
+		&:before {
+			border-color : $darken;
+		}
+	}
+	&.btn-gray-darker {
+		&:before {
+			border-color : $gray-darker;
+		}
+	}
+	&.btn-gray-dark {
+		&:before {
+			border-color : $gray-dark;
+		}
+	}
+	&.btn-gray {
+		&:before {
+			border-color : $gray;
+		}
+	}
+	&.btn-gray-light {
+		&:before {
+			border-color : $gray-light;
+		}
+	}
+	&.btn-gray-lighter {
+		&:before {
+			border-color : $gray-lighter;
+		}
+	}
+	&.btn-color1 {
+		&:before {
+			border-color : $color1;
+		}
+	}
+	&.btn-color2 {
+		&:before {
+			border-color : $color2;
+		}
+	}
+	&.btn-color3 {
+		&:before {
+			border-color : $color3;
+		}
+	}
+	&.btn-color4 {
+		&:before {
+			border-color : $color4;
+		}
+	}
+	&.btn-color5 {
+		&:before {
+			border-color : $color5;
+		}
+	}
+	&.btn-color6 {
+		&:before {
+			border-color : $color6;
+		}
+	}
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		&:before {
+			@include prefixed(animation-name, btn-ripple-out);
+		}
+		
+		&.btn-default {
+			&:before {
+				border-color : darken($btn-default-bg, 10%);
+			}
+		}
+		
+		&.btn-primary {
+			&:before {
+				border-color : darken($btn-primary-bg, 10%);
+			}
+		}
+		
+		&.btn-success {
+			&:before {
+				border-color : darken($btn-success-bg, 10%);
+			}
+		}
+		
+		&.btn-info {
+			&:before {
+				border-color : darken($btn-info-bg, 10%);
+			}
+		}
+		
+		&.btn-warning {
+			&:before {
+				border-color : darken($btn-warning-bg, 10%);
+			}
+		}
+		
+		&.btn-danger {
+			&:before {
+				border-color : darken($btn-danger-bg, 10%);
+			}
+		}
+		
+		&.btn-white {
+			&:before {
+				border-color : darken(white, 10%);
+			}
+		}
+		
+		&.btn-lighten {
+			&:before {
+				border-color : darken($lighten, 10%);
+			}
+		}
+		
+		&.btn-darken {
+			&:before {
+				border-color : darken($darken, 10%);
+			}
+		}
+		
+		&.btn-gray-darker {
+			&:before {
+				border-color : darken($gray-darker, 10%);
+			}
+		}
+		
+		&.btn-gray-dark {
+			&:before {
+				border-color : darken($gray-dark, 10%);
+			}
+		}
+		
+		&.btn-gray {
+			&:before {
+				border-color : darken($gray, 10%);
+			}
+		}
+		
+		&.btn-gray-light {
+			&:before {
+				border-color : darken($gray-light, 10%);
+			}
+		}
+		
+		&.btn-gray-lighter {
+			&:before {
+				border-color : darken($gray-lighter, 10%);
+			}
+		}
+		
+		&.btn-color1 {
+			&:before {
+				border-color : darken($color1, 10%);
+			}
+		}
+		
+		&.btn-color2 {
+			&:before {
+				border-color : darken($color2, 10%);
+			}
+		}
+		
+		&.btn-color3 {
+			&:before {
+				border-color : darken($color3, 10%);
+			}
+		}
+		
+		&.btn-color4 {
+			&:before {
+				border-color : darken($color4, 10%);
+			}
+		}
+		
+		&.btn-color5 {
+			&:before {
+				border-color : darken($color5, 10%);
+			}
+		}
+		
+		&.btn-color6 {
+			&:before {
+				border-color : darken($color6, 10%);
+			}
+		}
+	}
+}
+
+/* Icon Forward */
+@mixin icon-forward {
+	@include hacks();
+	@include prefixed(transition-duration, $fastDuration);
+	i {
+		@include prefixed(transform, translateZ(0));
+		@include prefixed(transition-duration, $fastDuration);
+		@include prefixed(transition-property, transform);
+		@include prefixed(transition-timing-function, ease-out);
+	}
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		i {
+			@include prefixed(transform, translateX(4px));
+		}
+	}
+}

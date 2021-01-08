@@ -1,0 +1,361 @@
+//+------------------------------------------------------------------+
+//| Relation aspect
+//+------------------------------------------------------------------+
+[class*="aspect-"] {
+	.social {
+		top      : 15px;
+		right    : 15px;
+		position : absolute;
+	}
+}
+
+//+------------------------------------------------------------------+
+//| models images
+//+------------------------------------------------------------------+
+.img {
+	margin-bottom : 30px;
+	
+	&.img-a {
+		padding-top   : 25px;
+		padding-right : 25px;
+		
+		.image {
+			background-color : $color1;
+			
+			[class*="aspect-"] {
+				top   : -25px;
+				right : -25px;
+			}
+		}
+	}
+	
+	&.img-b {
+		padding-top  : 25px;
+		padding-left : 25px;
+		
+		.image {
+			background-color : $color1;
+			
+			[class*="aspect-"] {
+				top  : -25px;
+				left : -25px;
+			}
+		}
+	}
+	
+	&.img-c {
+		padding-left   : 100px;
+		padding-bottom : 100px;
+		
+		.image {
+			position : relative;
+			
+			img {
+				border : 20px solid $color1;
+			}
+			
+			[class*="aspect-"] {
+				top     : 100px;
+				left    : -100px;
+				z-index : 1;
+			}
+			
+			.background-img {
+				img {
+					position      : absolute;
+					top           : 0;
+					left          : 0;
+					width         : 100%;
+					height        : 100%;
+					object-fit    : cover;
+					-o-object-fit : cover;
+					z-index       : 0;
+				}
+			}
+		}
+		
+		&.dark {
+			.image {
+				background-color : transparent;
+				
+				img {
+					border-color : $gray-dark;
+				}
+			}
+			
+			&.mix {
+				.image {
+					[class*="aspect-"] {
+						img {
+							border-color : $gray-lighter;
+							
+						}
+					}
+					
+					.background-img {
+						img {
+							border-color : $gray-dark;
+						}
+					}
+				}
+			}
+		}
+		
+		&.light {
+			.image {
+				background-color : transparent;
+				
+				img {
+					border-color : $gray-lighter;
+				}
+			}
+			
+			&.mix {
+				.image {
+					[class*="aspect-"] {
+						img {
+							border-color : $gray-dark;
+							
+						}
+					}
+					
+					.background-img {
+						img {
+							border-color : $gray-lighter;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	&.img-d {
+		padding-left   : 100px;
+		padding-bottom : 100px;
+		
+		.image {
+			position : relative;
+			
+			img {
+				border : 10px solid $color1;
+			}
+			
+			[class*="aspect-"] {
+				top     : 100px;
+				left    : -100px;
+				z-index : 1;
+			}
+			
+			.background-img {
+				img {
+					position      : absolute;
+					top           : 0;
+					left          : 0;
+					width         : 100%;
+					height        : 100%;
+					object-fit    : cover;
+					-o-object-fit : cover;
+					z-index       : 0;
+				}
+			}
+		}
+		
+		&.dark {
+			.image {
+				background-color : transparent;
+				
+				img {
+					border-color : $gray-dark;
+				}
+			}
+			
+			&.mix {
+				.image {
+					[class*="aspect-"] {
+						img {
+							border-color : $gray-lighter;
+							
+						}
+					}
+					
+					.background-img {
+						img {
+							border-color : $gray-dark;
+						}
+					}
+				}
+			}
+		}
+		
+		&.light {
+			.image {
+				background-color : transparent;
+				
+				img {
+					border-color : $gray-lighter;
+				}
+			}
+			
+			&.mix {
+				.image {
+					[class*="aspect-"] {
+						img {
+							border-color : $gray-dark;
+							
+						}
+					}
+					
+					.background-img {
+						img {
+							border-color : $gray-lighter;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	&.img-e {
+		margin-bottom : 0;
+		
+		.image {
+			background-color : transparent;
+			overflow         : hidden;
+			
+			[class*="aspect-"] {
+				left     : -25px;
+				overflow : initial;
+				
+				> figure {
+					z-index : 20;
+				}
+				
+				&:after {
+					content          : '';
+					position         : absolute;
+					top              : 10%;
+					bottom           : 10%;
+					left             : 0;
+					right            : -10%;
+					background-color : $color1;
+					z-index          : 15;
+				}
+			}
+		}
+	}
+	
+	&.gradient {
+		.image {
+			background : rgba($color1, 0.9);
+			background : -moz-linear-gradient(45deg, rgba($color1, 0.9) 0%, rgba($color1, 0.9) 0%, rgba(lighten($color1, 10%), 0.9) 25%, rgba(lighten($color1, 15%), 0.5) 50%, rgba(lighten($color1, 10%), 0.9) 75%, rgba($color1, 0.9), 100%);
+			background : -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba($color1, 0.9)), color-stop(0%, rgba($color1, 0.9)), color-stop(25%, rgba(lighten($color1, 10%), 0.9)), color-stop(50%, rgba(lighten($color1, 15%), 0.5)), color-stop(75%, rgba(lighten($color1, 10%), 0.9)), color-stop(100%, rgba($color1, 0.9)));
+			background : -webkit-linear-gradient(45deg, rgba($color1, 0.9) 0%, rgba($color1, 0.9) 0%, rgba(lighten($color1, 10%), 0.9) 25%, rgba(lighten($color1, 15%), 0.5) 50%, rgba(lighten($color1, 10%), 0.9) 75%, rgba($color1, 0.9) 100%);
+			background : -o-linear-gradient(45deg, rgba($color1, 0.9) 0%, rgba($color1, 0.9) 0%, rgba(lighten($color1, 10%), 0.9) 25%, rgba(lighten($color1, 15%), 0.5) 50%, rgba(lighten($color1, 10%), 0.9) 75%, rgba($color1, 0.9) 100%);
+			background : linear-gradient(45deg, rgba($color1, 0.9) 0%, rgba($color1, 0.9) 0%, rgba(lighten($color1, 10%), 0.9) 25%, rgba(lighten($color1, 15%), 0.5) 50%, rgba(lighten($color1, 10%), 0.9) 75%, rgba($color1, 0.9) 100%);
+			filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr=$color1, endColorstr=lighten($color1, 10%), GradientType=1);
+		}
+	}
+	
+	&.dark {
+		.image {
+			background-color : $gray-dark;
+		}
+	}
+	
+	&.light {
+		.image {
+			background-color : $gray-lighter;
+		}
+	}
+	
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+	.image {
+		&.image-a {
+			> figure {
+				img {
+					position : absolute;
+					top      : 0;
+					left     : 10%;
+					width    : 60%;
+					height   : 80%;
+				}
+				
+			}
+			
+			> figure + figure {
+				img {
+					position   : relative;
+					margin-top : 60px;
+					border     : 12px solid #ffffff;
+				}
+				
+			}
+		}
+	}
+	
+	.aspect-wide-sm {
+		@include aspect-ratio(16, 9);
+	}
+	
+	.aspect-rectangular-sm {
+		@include aspect-ratio(4, 3);
+	}
+	
+	.aspect-square-sm {
+		@include aspect-ratio(1, 1);
+	}
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+	.image {
+		&.image-a {
+			> figure {
+				img {
+					position : absolute;
+					top      : 0;
+					left     : 10%;
+					width    : 60%;
+					height   : 80%;
+				}
+				
+			}
+			
+			> figure + figure {
+				img {
+					position   : relative;
+					margin-top : 60px;
+					border     : 12px solid #ffffff;
+				}
+				
+			}
+		}
+	}
+	
+	.aspect-wide-xs {
+		@include aspect-ratio(16, 9);
+	}
+	
+	.aspect-rectangular-xs {
+		@include aspect-ratio(4, 3);
+	}
+	
+	.aspect-square-xs {
+		@include aspect-ratio(1, 1);
+	}
+}

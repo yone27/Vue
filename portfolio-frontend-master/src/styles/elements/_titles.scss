@@ -1,0 +1,311 @@
+//+------------------------------------------------------------------+
+//| Titles
+//+------------------------------------------------------------------+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	margin-bottom : 30px;
+	margin-top    : 0;
+	position      : relative;
+	
+	small {
+		letter-spacing : 0.1em;
+		text-transform : uppercase;
+		font-size      : 16px;
+		line-height    : 1.2em;
+		font-weight    : 400;
+		color          : $color1;
+	}
+	
+	span {
+		& ~ strong {
+			font-weight : normal;
+		}
+		
+		position       : relative;
+		overflow       : hidden !important;
+		display        : inline-block;
+		vertical-align : bottom !important;
+		
+		
+		@include hacks();
+		@include prefixed(transition-property, color);
+		@include prefixed(transition-duration, $slowDuration);
+		
+		&:before {
+			content          : " ";
+			background-color : white;
+			position         : absolute;
+			z-index          : -1;
+			top              : 0;
+			left             : 0;
+			right            : 0;
+			bottom           : 0;
+			@include prefixed(transform, scaleY(0));
+			@include prefixed(transform-origin, 50% 100%);
+			@include prefixed(transition-property, transform);
+			@include prefixed(transition-duration, $slowDuration);
+			@include prefixed(transition-timing-function, ease-out);
+		}
+	}
+	
+	&:hover,
+	&.active {
+		span {
+			color : $color4;
+			
+			&:before {
+				background-color : $color1;
+				@include prefixed(transform, scaleY(1));
+				@include prefixed(transition-timing-function, cubic-bezier(.52, 1.64, .37, .66));
+			}
+		}
+	}
+	
+	&.big {
+		font-size   : 3.5em;
+		line-height : 1.2;
+	}
+	
+	&.title-header {
+		padding       : 10px 0;
+		color         : $color1;
+		border-bottom : 2px solid $color1;
+		display       : inline-block;
+		margin-top    : 70px;
+		
+		&:after {
+			content       : '';
+			position      : absolute;
+			top           : -40px;
+			left          : 0;
+			border-bottom : 40px solid transparent;
+			border-left   : 40px solid $color1;
+		}
+		
+		&.title-header-a {
+			display : block;
+		}
+		
+		&.title-header-b {
+			color         : $gray-dark;
+			border-bottom : 2px solid $gray-dark;
+			display       : block;
+			
+			&:after {
+				border-left : 40px solid $gray-dark;
+			}
+		}
+		
+		&.title-header-c {
+			color         : $gray-dark;
+			border-bottom : 2px solid $gray-dark;
+			display       : inline-block;
+			
+			&:after {
+				border-left : 40px solid $gray-dark;
+			}
+		}
+		
+		&.title-header-d {
+			border-bottom : none;
+			display       : inline-block;
+		}
+		
+		&.title-header-e {
+			color         : $gray-dark;
+			border-bottom : none;
+			display       : inline-block;
+			
+			&:after {
+				border-left : 40px solid $gray-dark;
+			}
+		}
+	}
+	
+	&.ll, &.lc, &.lr {
+		padding-top : 15px;
+		
+		&:after, &:before {
+			content               : " ";
+			width                 : 15%;
+			height                : 4px;
+			-webkit-border-radius : 50px;
+			-moz-border-radius    : 50px;
+			border-radius         : 50px;
+			left                  : 0;
+			bottom                : auto;
+			top                   : 0;
+			border-bottom         : none;
+			background-color      : currentColor;
+			-ms-transform         : translateY(0);
+			-webkit-transform     : translateY(0);
+			-moz-transform        : translateY(0);
+			-o-transform          : translateY(0);
+			transform             : translateY(0);
+			transition            : all .4s ease-in-out;
+		}
+		
+		&:before {
+			position         : absolute;
+			top              : auto;
+			bottom           : 0;
+			left             : auto;
+			right            : 0;
+			background-color : $color1;
+		}
+		
+		&:after {
+			background-color : $color3 !important;
+		}
+		
+		&:hover {
+			&:after, &:before {
+				width : 20%;
+			}
+		}
+	}
+	
+	&.ll {
+		text-align : left;
+	}
+	
+	&.lc {
+		text-align : center;
+	}
+	
+	&.lr {
+		text-align : right;
+	}
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		&.ll-lg {
+			text-align   : left;
+			margin-left  : 0;
+			margin-right : auto;
+		}
+		
+		&.lr-lg {
+			text-align   : right;
+			margin-right : 0;
+			margin-left  : auto;
+		}
+		
+		&.lc-lg {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+	}
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		&.ll-md {
+			text-align   : left;
+			margin-left  : 0;
+			margin-right : auto;
+		}
+		
+		&.lr-md {
+			text-align   : right;
+			margin-right : 0;
+			margin-left  : auto;
+		}
+		
+		&.lc-md {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+	}
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		&.big {
+			font-size : 2.5em;
+		}
+		
+		&.ll, &.lc, &.lr {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+		
+		&.ll-sm {
+			text-align   : left;
+			margin-left  : 0;
+			margin-right : auto;
+		}
+		
+		&.lr-sm {
+			text-align   : right;
+			margin-right : 0;
+			margin-left  : auto;
+		}
+		
+		&.lc-sm {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+		
+		&.subtitle-header {
+			max-width : 100%;
+			
+			&.subtitle-header-a {
+				max-width : 100%;
+			}
+		}
+	}
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		&.big {
+			font-size : 2.5em;
+		}
+		
+		&.ll, &.lc, &.lr {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+		
+		&.ll-xs {
+			text-align   : left;
+			margin-left  : 0;
+			margin-right : auto;
+		}
+		
+		&.lr-xs {
+			text-align   : right;
+			margin-right : 0;
+			margin-left  : auto;
+		}
+		
+		&.lc-xs {
+			text-align   : center;
+			margin-right : auto;
+			margin-left  : auto;
+		}
+		
+		&.subtitle-header {
+			max-width : 100%;
+			
+			&.subtitle-header-a {
+				max-width : 100%;
+			}
+		}
+	}
+}

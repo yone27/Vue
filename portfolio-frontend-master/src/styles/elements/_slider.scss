@@ -1,0 +1,448 @@
+//+------------------------------------------------------------------+
+//| Slider
+//+------------------------------------------------------------------+
+.slider {
+	@mixin gradient-horizontal($start-color: #555555, $end-color: #333333, $start-percent: 0%, $end-percent: 100%) {
+		background-image  : -webkit-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Safari 5.1-6, Chrome 10+
+		background-image  : -o-linear-gradient(left, $start-color $start-percent, $end-color $end-percent); // Opera 12
+		background-image  : linear-gradient(to right, $start-color $start-percent, $end-color $end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+		background-repeat : repeat-x;
+		filter            : progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($start-color)}', endColorstr='#{ie-hex-str($end-color)}', GradientType=1); // IE9 and down
+	}
+	
+	.scroll {
+		position   : absolute;
+		width      : 100%;
+		bottom     : 30px;
+		left       : 0;
+		text-align : center;
+		z-index    : 2;
+		
+		> a {
+			padding               : 10px 4px;
+			-webkit-border-radius : 50px;
+			-moz-border-radius    : 50px;
+			border-radius         : 50px;
+			animation             : bounce 2s infinite ease-in-out;
+			-webkit-animation     : bounce 2s infinite ease-in-out;
+			-moz-animation        : bounce 2s infinite ease-in-out;
+			-o-animation          : bounce 2s infinite ease-in-out;
+		}
+		
+		span {
+			margin                : 15px auto 0 auto;
+			padding               : 2px 12px;
+			display               : table;
+			font-size             : 16px;
+			font-weight           : 600;
+			-webkit-border-radius : 50px;
+			-moz-border-radius    : 50px;
+			border-radius         : 50px;
+			color                 : white;
+			background-color      : rgba(0, 0, 0, 0.8);
+		}
+	}
+	
+	.carousel {
+		.carousel-control {
+			&.left {
+				@include gradient-horizontal($start-color : rgba(0, 0, 0, .5), $end-color : rgba(0, 0, 0, .0001));
+			}
+			
+			&.right {
+				@include gradient-horizontal($start-color : rgba(0, 0, 0, .0001), $end-color : rgba(0, 0, 0, .5));
+			}
+		}
+		
+		&.full-screen {
+			.carousel-inner {
+				height : 100%;
+				
+				.item {
+					height : 100%;
+					
+					&.active {
+						height : 100%;
+					}
+				}
+			}
+			
+			&:hover {
+				.fa {
+					opacity : 1;
+					color   : $color1;
+				}
+			}
+			
+			.fa {
+				position          : absolute !important;
+				top               : 50%;
+				z-index           : 5;
+				opacity           : 0;
+				left              : 50%;
+				-ms-transform     : translate(-50%, -50%);
+				-webkit-transform : translate(-50%, -50%);
+				-moz-transform    : translate(-50%, -50%);
+				-o-transform      : translate(-50%, -50%);
+				transform         : translate(-50%, -50%);
+			}
+		}
+		
+		&.full-width {
+			.item {
+				height : 100%;
+				
+				&.active {
+					height : 100%;
+				}
+			}
+			
+			.carousel-inner {
+				height : 100%;
+			}
+			
+			&:hover {
+				i {
+					opacity : 1;
+				}
+			}
+			
+			i {
+				position          : absolute !important;
+				top               : 50%;
+				z-index           : 5;
+				opacity           : 0;
+				left              : 50%;
+				-ms-transform     : translate(-50%, -50%);
+				-webkit-transform : translate(-50%, -50%);
+				-moz-transform    : translate(-50%, -50%);
+				-o-transform      : translate(-50%, -50%);
+				transform         : translate(-50%, -50%);
+			}
+		}
+		
+		&.carousel-fade {
+			.carousel-inner {
+				.item {
+					opacity                     : 0;
+					-webkit-transition-property : opacity;
+					-moz-transition-property    : opacity;
+					-o-transition-property      : opacity;
+					transition-property         : opacity;
+					
+					&.active {
+						opacity : 1;
+					}
+				}
+			}
+			
+			@media all and (transform-3d), (-webkit-transform-3d) {
+				.carousel-inner {
+					.item {
+						&.next, &.active.right {
+							opacity           : 0;
+							-webkit-transform : translate3d(0, 0, 0);
+							transform         : translate3d(0, 0, 0);
+						}
+						
+						&.prev, &.active.left {
+							opacity           : 0;
+							-webkit-transform : translate3d(0, 0, 0);
+							transform         : translate3d(0, 0, 0);
+						}
+						
+						&.next.left, &.prev.right, &.active {
+							opacity           : 1;
+							-webkit-transform : translate3d(0, 0, 0);
+							transform         : translate3d(0, 0, 0);
+						}
+					}
+				}
+			}
+			
+			.control-box {
+				opacity            : 0;
+				-webkit-transition : all 0.5s ease;
+				-moz-transition    : all 0.5s ease;
+				-ms-transition     : all 0.5s ease;
+				-o-transition      : all 0.5s ease;
+				transition         : all 0.5s ease;
+				/* Carousel Control custom */
+				.carousel-control {
+					-webkit-transition : all 0.5s ease;
+					-moz-transition    : all 0.5s ease;
+					-ms-transition     : all 0.5s ease;
+					-o-transition      : all 0.5s ease;
+					transition         : all 0.5s ease;
+					
+					.control-icon {
+						font-size  : 48px;
+						margin-top : -15px;
+						display    : inline-block;
+						position   : absolute;
+						top        : 50%;
+						z-index    : 5;
+						
+						&.fa {
+							opacity            : 1;
+							-webkit-transition : all 0.5s ease;
+							-moz-transition    : all 0.5s ease;
+							-ms-transition     : all 0.5s ease;
+							-o-transition      : all 0.5s ease;
+							transition         : all 0.5s ease;
+							
+							&:hover {
+								opacity : 1;
+							}
+						}
+					}
+					
+					.prev {
+						margin-left : -15px;
+						left        : 50%;
+					}
+					
+					.next {
+						margin-right : -15px;
+						right        : 50%;
+					}
+					
+					&.left {
+						i {
+							left : 35%;
+						}
+					}
+					
+					&.right {
+						i {
+							left : 65%;
+						}
+					}
+				}
+			}
+			
+			.carousel-indicators {
+				li {
+					-webkit-transition : all 0.5s ease;
+					-moz-transition    : all 0.5s ease;
+					-ms-transition     : all 0.5s ease;
+					-o-transition      : all 0.5s ease;
+					transition         : all 0.5s ease;
+					border             : 0;
+					background-color   : lighten($color1, 30%);
+					margin             : 0 3px;
+					width              : 12px;
+					height             : 12px;
+					
+					&.active {
+						border           : 0;
+						background-color : $color1;
+						margin           : 0 3px;
+					}
+				}
+			}
+			
+			&:hover {
+				.control-box {
+					opacity : 1;
+					
+					.carousel-control {
+						&.left {
+							i {
+								left : 50%;
+							}
+						}
+						
+						&.right {
+							i {
+								left : 50%;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		&.carousel-a {
+			-webkit-box-shadow : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			-moz-box-shadow    : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			box-shadow         : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			
+			.carousel-control {
+				color : #666666;
+				
+				&.left {
+					background : none;
+				}
+				
+				&.right {
+					background : none;
+				}
+			}
+		}
+		
+		&.carousel-b {
+			-webkit-box-shadow : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			-moz-box-shadow    : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			box-shadow         : 0 3px 22px -8px rgba(0, 0, 0, 0.75);
+			
+			&.carousel-fade {
+				.carousel-inner {
+					.item {
+						opacity                     : 0;
+						-webkit-transition-property : opacity;
+						-moz-transition-property    : opacity;
+						-o-transition-property      : opacity;
+						transition-property         : opacity;
+						
+						&.active {
+							opacity : 1;
+						}
+					}
+				}
+				
+				.control-box {
+					opacity            : 0;
+					-webkit-transition : all 0.5s ease;
+					-moz-transition    : all 0.5s ease;
+					-ms-transition     : all 0.5s ease;
+					-o-transition      : all 0.5s ease;
+					transition         : all 0.5s ease;
+					/* Carousel Control custom */
+					.carousel-control {
+						-webkit-transition : all 0.5s ease;
+						-moz-transition    : all 0.5s ease;
+						-ms-transition     : all 0.5s ease;
+						-o-transition      : all 0.5s ease;
+						transition         : all 0.5s ease;
+						
+						.control-icon {
+							font-size  : 48px;
+							margin-top : -15px;
+							display    : inline-block;
+							position   : absolute;
+							top        : 50%;
+							z-index    : 5;
+							
+							&.fa {
+								opacity            : 1;
+								-webkit-transition : all 0.5s ease;
+								-moz-transition    : all 0.5s ease;
+								-ms-transition     : all 0.5s ease;
+								-o-transition      : all 0.5s ease;
+								transition         : all 0.5s ease;
+								
+								&:hover {
+									opacity : 1;
+								}
+							}
+						}
+						
+						.prev {
+							margin-left : -15px;
+							left        : 50%;
+						}
+						
+						.next {
+							margin-right : -15px;
+							right        : 50%;
+						}
+						
+						&.left {
+							i {
+								left : 35%;
+							}
+						}
+						
+						&.right {
+							i {
+								left : 65%;
+							}
+						}
+					}
+				}
+				
+				.carousel-indicators {
+					li {
+						-webkit-transition : all 0.5s ease;
+						-moz-transition    : all 0.5s ease;
+						-ms-transition     : all 0.5s ease;
+						-o-transition      : all 0.5s ease;
+						transition         : all 0.5s ease;
+						border             : 0;
+						background-color   : lighten($color1, 30%);
+						margin             : 0 3px;
+						width              : 12px;
+						height             : 12px;
+						
+						&.active {
+							border           : 0;
+							background-color : $color1;
+							margin           : 0 3px;
+						}
+					}
+				}
+				
+				&:hover {
+					.control-box {
+						opacity : 1;
+						
+						.carousel-control {
+							&.left {
+								i {
+									left : 50%;
+								}
+							}
+							
+							&.right {
+								i {
+									left : 50%;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	&.slider-a {
+		&.overlap {
+			padding-bottom : 180px;
+		}
+	}
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+	.slider {
+		&.slider-a {
+			&.overlap {
+				padding-bottom : 100px;
+			}
+		}
+	}
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+	.slider {
+		&.slider-a {
+			&.overlap {
+				padding-bottom : 180px;
+			}
+		}
+	}
+}

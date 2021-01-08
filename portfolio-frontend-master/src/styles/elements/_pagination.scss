@@ -1,0 +1,42 @@
+//+------------------------------------------------------------------+
+//| Pagination
+//+------------------------------------------------------------------+
+.pagination {
+	margin : 0;
+	
+	.pagination {
+		&.pagination-a {
+			@include pagination-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $border-radius-large);
+			margin : 20px 0 0 0;
+			
+			> li {
+				display : inline-block;
+				
+				&:not(:last-child) {
+					margin-right : 5px;
+				}
+			}
+		}
+		
+	}
+}
+
+//+------------------------------------------------------------------+
+//| Media query
+//+------------------------------------------------------------------+
+
+/* >= col-lg | Large and up*/
+@media(min-width : 1200px) {
+}
+
+/* == col-md |Medium only col-md */
+@media(min-width : 992px) and(max-width : 1199px) {
+}
+
+/* == col-sm Small only col-sm */
+@media(min-width : 768px) and(max-width : 991px) {
+}
+
+/* < col-sm | Small and down */
+@media(max-width : 767px) {
+}
