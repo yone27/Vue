@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue | renderizado de listas</title>
+</head>
+
+<body>
+    <template v-for="numero in numeros">
+        <h1>{{numero}}</h1>
+        <hr>
+    </template>
+    <ul>
+        <li v-for="numero in 10">
+            {{ numero }}
+        </li>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

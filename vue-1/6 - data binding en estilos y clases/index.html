@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue | data binding en estilos y clases</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <input type="color" v-model="color">
+    <pre>
+        {{$data | json}}
+    </pre>
+    <h1 v-bind:style="{color:color}">Cambio de color</h1>
+    <hr>
+    <h2 v-bind:style="[objEstilos,objEstilos2]">Estilos inline a traves de varios obj</h2>
+
+    <h2 v-bind:style="objEstilos">Estilos inline a traves de un obj</h2>
+
+    <h2 v-bind:style="{color: colorFuente, fontSize: tamanoFuente}">Estilos inline</h2>
+
+    <h2 v-bind:class="[listaClases.azul, subrayado ? listaClases.subrayado : '']">sitanxis array</h2>
+
+    <h2 v-bind:class="{'azul': azul, 'subrayado': subrayado}">Sintaxis de objeto</h2>
+
+    <h2 v-bind:class="objClases">Sintaxis de objeto, forma directa</h2>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

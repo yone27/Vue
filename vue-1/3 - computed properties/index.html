@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue | propierties computed</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt- 5">
+        <div id="main" class="panel panel-default">
+
+            <div class="panel-body">
+                <form action="">
+                    <div class="form-group">
+                        <input v-model="nombre" type="text" placeholder="Nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input v-model="edad" type="number" placeholder="Edad" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input v-model="sexo" type="text" placeholder="Sexo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input v-model="email" type="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button v-if="todaLaInformacion" type="submit" class="btn btn-info pull-right">
+                            Enviar datos
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <pre>
+            {{ $data | json}}
+        </pre>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input, textarea {
+            display: block;
+            margin: 10px 0;
+        }
+        .alerta{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <p class="alerta" v-if="!mensaje">debes introducir un mensaje</p>
+
+        <textarea v-model="mensaje" cols="30" required rows="10" placeholder="Escribe tu mensaje"></textarea>
+        <input type="submit" value="Enviar mensaje" v-if="mensaje">
+
+        <code>
+            {{$data | json}}
+        </code>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <script>
+        new Vue({
+            el: 'body',
+            data: {
+                mensaje: '',
+            }
+        })
+    </script>
+</body>
+</html>

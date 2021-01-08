@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue | renderizado condicional</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <template v-if="activado">
+        <h1>Estoy activado</h1>
+        <hr>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dicta placeat, sit excepturi harum corporis
+            eaque temporibus. Vitae, odio ipsum. Aut mollitia rerum facilis voluptatum veniam necessitatibus voluptates
+            animi placeat.</p>
+    </template>
+    <template v-else>
+        <h1>Estoy desactivado</h1>
+        <hr>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde dicta placeat, sit excepturi harum corporis
+            eaque temporibus. Vitae, odio ipsum. Aut mollitia rerum facilis voluptatum veniam necessitatibus voluptates
+            animi placeat.</p>
+    </template>
+
+
+    <hr>
+    <h1 v-show="activado">soy un header</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.16/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
